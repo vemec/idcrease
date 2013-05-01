@@ -1,3 +1,5 @@
-h1. idcrease
+# idcrease
 
 Increase or decrease numeric values
+
+Still a work in progress :)

@@ -1,5 +1,5 @@
 /*
- *  incdec v 0.1 - jQuery plugin
+ *  incdec v 0.1.1 - jQuery plugin
  *  Increase or decrease numeric values
  *  written by Diego Ghersi
  *
@@ -9,49 +9,56 @@
  *
  */
 
-(function( $ ) {
-  $.fn.idcrease = function(element, data_type, original_value, next_value) {
+(function($) {
+  $.fn.idcrease = function(options) {
 
-    // verified if the value is not empty and replace with 0
-    if (!original_value) {
-        original_value = 0;
-    }
+    var settings = $.extend( {
+      'data_type' : 'none',
+      'original_value' : 0,
+      'next_value' : 100
+    }, options);
 
-    // convert the value to a numeric value
-    original_value = parseFloat(original_value);
-    next_value = parseFloat(next_value);
+    return this.each(function() {
 
-    // if the values are the same skip animation
-    if (original_value != next_value)
-    {
-        $({value: original_value}).animate({value: next_value}, {
-            duration: 500,
-            easing: 'swing',
-            step: function()
-            {
-                if (data_type == 'money') {
-                    element.text(format_money(Math.abs(this.value)), 0);
+        var element = $(this);
+
+        // convert the value to a numeric value
+        settings.original_value = parseFloat(settings.original_value);
+        settings.next_value = parseFloat(settings.next_value);
+
+        // if the values are the same skip animation
+        if (settings.original_value != settings.next_value)
+        {
+            $({value: settings.original_value}).animate({value: settings.next_value}, {
+                duration: 2000,
+                easing: 'swing',
+                step: function()
+                {
+                    if (settings.data_type == 'money') {
+                        element.text('$' + Math.ceil(this.value));
+                    }
+                    else if (settings.data_type == 'percentage') {
+                        element.text(Math.ceil(this.value) + '%');
+                    }
+                    else if (settings.data_type == 'none') {
+                        element.text(Math.ceil(this.value));
+                    }
+                },
+                complete: function() {
+                    if (settings.data_type == 'money') {
+                        element.text('$' + settings.next_value);
+                    }
+                    else if (settings.data_type == 'percentage') {
+                        element.text(settings.next_value + '%');
+                    }
+                    else if (settings.data_type == 'none') {
+                        element.text(settings.next_value);
+                    }
                 }
-                else if (data_type == 'percentage') {
-                    element.text(format_rate(Math.abs(this.value)), 1);
-                }
-                else if (data_type == 'none') {
-                    element.text(Math.ceil(this.value));
-                }
-            },
-            complete: function() {
-                if (data_type == 'money') {
-                    element.text(format_money(next_value), 0);
-                }
-                else if (data_type == 'percentage') {
-                    element.text(format_rate(next_value), 1);
-                }
-                else if (data_type == 'none') {
-                    element.text(next_value);
-                }
-            }
-        });
-    }
+            });
+        }
+
+    });
 
   };
 })( jQuery );

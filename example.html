@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>idcrease example</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="jquery.idcrease.js"></script>
+</head>
+    <body>
+    
+    <div id="number_money">0</div>
+    <div id="number_percentage">0</div>
+    <div id="number_none">0</div>
+
+
+    <a id="click" href="#">Click me</a>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        $('#click').click(function() {
+
+            $('#number_money').idcrease({
+                'data_type' : 'money',
+                'original_value' : 10,
+                'next_value' : 235
+            });
+
+            $('#number_percentage').idcrease({
+                'data_type' : 'percentage',
+                'original_value' : 20,
+                'next_value' : 95
+            });
+
+            $('#number_none').idcrease({
+                'data_type' : 'none',
+                'original_value' : 10,
+                'next_value' : 300
+            });
+
+        });
+
+        //]]>
+    </script>
+    </body>
+</html>

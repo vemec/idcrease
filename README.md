@@ -1,4 +1,4 @@
-idcrease v 0.1.1 - jQuery plugin
+idcrease v 0.1.2 - jQuery plugin
 ==================================================
 
 Description

@@ -5,16 +5,59 @@
     <title>idcrease example</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="jquery.idcrease.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Helvetica, Arial;
+            color: #666;
+        }
+
+        .container {
+            margin: 0 auto 30px;
+            padding: 10px;
+            width: 200px;
+            background: #CCC;
+            border-radius: 5px;
+        }
+
+        .container div {
+            padding: 5px;
+            margin: 5px 0;
+            background: #FFF;
+            border: 1px solid #999;
+            box-shadow: 0 1px 0 #FAFAFA, 0 2px 5px #CCC inset;
+            text-align: right;
+            border-radius: 5px;
+        }
+
+        .container a {
+            margin: 15px 0 0 0;
+            padding: 10px 0;
+            color: #666;
+            color: #FFF;
+            text-shadow: 0 1px 0 #114063;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: #1c96eb;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#1c96eb), to(#357eb5));
+            background-image: -webkit-linear-gradient(top, #1c96eb, #357eb5);
+            background-image: -moz-linear-gradient(top, #1c96eb, #357eb5);
+            background-image: -o-linear-gradient(top, #1c96eb, #357eb5);
+            background-image: -ms-linear-gradient(top, #1c96eb, #357eb5);
+            background-image: linear-gradient(top, #1c96eb, #357eb5);
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
 </head>
     <body>
-    
-    <div id="number_money">0</div>
-    <div id="number_percentage">0</div>
-    <div id="number_none">0</div>
-
-
-    <a id="click" href="#">Click me</a>
-
+    <div class="container">
+        <div id="number_money">0</div>
+        <div id="number_percentage">0</div>
+        <div id="number_none">0</div>
+        <a id="click" href="#">Click me</a>
+    </div>
 
     <script type="text/javascript">
         //<![CDATA[
@@ -24,19 +67,22 @@
             $('#number_money').idcrease({
                 'data_type' : 'money',
                 'original_value' : 10,
-                'next_value' : 1340.32
+                'next_value' : 1340.32,
+                'duration': 5000
             });
 
             $('#number_percentage').idcrease({
                 'data_type' : 'percentage',
                 'original_value' : 20,
-                'next_value' : 95
+                'next_value' : 95.44,
+                'duration': 3000
             });
 
             $('#number_none').idcrease({
                 'data_type' : 'none',
                 'original_value' : 10,
-                'next_value' : 300
+                'next_value' : 300,
+                'duration': 1000
             });
 
         });

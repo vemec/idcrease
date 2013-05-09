@@ -1,5 +1,5 @@
 /*
- *  idcrease v 0.1.1 - jQuery plugin
+ *  idcrease v 0.1.2 - jQuery plugin
  *  Increase or decrease numeric values
  *  written by Diego Ghersi
  *
@@ -14,14 +14,21 @@
 
     // idcrease settings
     var settings = $.extend( {
-      'data_type' : 'none',
+      'data_type' : 'none', // none | money | format_percentage
       'original_value' : 0,
-      'next_value' : 100
+      'next_value' : 100,
+      'duration' : 2000,
+      'easing' : 'swing'
     }, options);
 
     // format money values
     function format_money(value, symbol) {
         return symbol + value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+    }
+
+    // format percentage values
+    function format_percentage(value) {
+        return value.toFixed(2) + '%';
     }
 
     return this.each(function() {
@@ -36,18 +43,18 @@
         if (settings.original_value != settings.next_value)
         {
             $({value: settings.original_value}).animate({value: settings.next_value}, {
-                duration: 2000,
-                easing: 'swing',
+                duration: settings.duration,
+                easing: settings.easing,
                 step: function()
                 {
                     if (settings.data_type == 'money') {
-                        element.text(format_money(Math.ceil(this.value), '$'));
+                        element.text(format_money(this.value, '$'));
                     }
                     else if (settings.data_type == 'percentage') {
-                        element.text(Math.ceil(this.value) + '%');
+                        element.text(format_percentage(this.value));
                     }
                     else if (settings.data_type == 'none') {
-                        element.text(Math.ceil(this.value));
+                        element.text(Math.floor(this.value * 100) / 100);
                     }
                 },
                 complete: function() {

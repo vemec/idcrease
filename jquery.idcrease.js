@@ -1,5 +1,5 @@
 /*
- *  idcrease v 0.1.2 - jQuery plugin
+ *  idcrease v 0.1.3 - jQuery plugin
  *  Increase or decrease numeric values
  *  written by Diego Ghersi
  *
@@ -14,11 +14,12 @@
 
     // idcrease settings
     var settings = $.extend( {
-      'data_type' : 'none', // none | money | format_percentage
+      'data_type' : 'none', // none | money | percentage
       'original_value' : 0,
       'next_value' : 100,
       'duration' : 2000,
-      'easing' : 'swing'
+      'easing' : 'swing',
+      'sufix': ''
     }, options);
 
     // format money values
@@ -48,30 +49,28 @@
                 step: function()
                 {
                     if (settings.data_type == 'money') {
-                        element.text(format_money(this.value, '$'));
+                        element.text(format_money(this.value, '$'+settings.sufix));
                     }
                     else if (settings.data_type == 'percentage') {
-                        element.text(format_percentage(this.value));
+                        element.text(format_percentage(this.value)+settings.sufix);
                     }
                     else if (settings.data_type == 'none') {
-                        element.text(Math.floor(this.value * 100) / 100);
+                        element.text(Math.round(this.value)+settings.sufix);
                     }
                 },
                 complete: function() {
                     if (settings.data_type == 'money') {
-                        element.text(format_money(settings.next_value, '$'));
+                        element.text(format_money(settings.next_value, '$'+settings.sufix));
                     }
                     else if (settings.data_type == 'percentage') {
-                        element.text(settings.next_value + '%');
+                        element.text(settings.next_value + '%'+settings.sufix);
                     }
                     else if (settings.data_type == 'none') {
-                        element.text(settings.next_value);
+                        element.text(settings.next_value+settings.sufix);
                     }
                 }
             });
         }
-
     });
-
   };
 })( jQuery );

@@ -52,6 +52,7 @@ Include script *after* the jQuery library:
 
 - Source hosted at [GitHub](https://github.com/vemec/idcrease)
 - Report issues, questions and feature requests on [GitHub Issues](https://github.com/vemec/idcrease/issues)
+- GitHub page at [idCrease](http://vemec.github.io/idcrease)
 
 ## Author
 

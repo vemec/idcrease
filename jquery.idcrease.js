@@ -1,5 +1,5 @@
 /*
- *  idcrease v 0.2.0 - jQuery plugin
+ *  idcrease v 1.0 - jQuery plugin
  *  Increase or decrease numeric values
  *  written by Diego Ghersi
  *

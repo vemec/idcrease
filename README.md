@@ -1,4 +1,4 @@
-# idcrease v 0.1.3 - jQuery plugin
+# idcrease v 1.0 - jQuery plugin
 
 Increase or decrease numeric values
 
@@ -16,6 +16,7 @@ Include script *after* the jQuery library:
     'duration' : 2000
     'easing' : 'swing'
     'sufix': ''
+    'decimals': false
 
 ## Usage
 
@@ -28,7 +29,6 @@ Include script *after* the jQuery library:
 
     $('.some_class1').idcrease({
         'data_type' : 'percentage',
-        'original_value' : 20,
         'next_value' : 95.44,
         'duration': 3000
     });

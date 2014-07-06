@@ -16,6 +16,7 @@
         // idcrease settings
         var settings = $.extend({
           'data_type' : 'none', // none | money | percentage
+          'original_value' : 0,
           'next_value' : 100,
           'duration' : 500,
           'easing' : 'swing',
